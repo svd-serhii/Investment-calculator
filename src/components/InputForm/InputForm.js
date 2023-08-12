@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Button from "../UI/Button/Button";
 
+import styles from "./InputForm.module.css";
+
 const initialState = {
   "current-savings": 10000,
   "yearly-contribution": 1200,
@@ -25,14 +27,14 @@ const InputForm = (props) => {
     setUserInput((prevState) => {
       return {
         ...prevState,
-        [input]: value,
+        [input]: +value,
       };
     });
   };
 
   return (
-    <form className="form" onSubmit={submitHandler}>
-      <div className="input-group">
+    <form className={styles.form} onSubmit={submitHandler}>
+      <div className={styles["input-group"]}>
         <p>
           <label htmlFor="current-savings">Current Savings ($)</label>
           <input
@@ -52,7 +54,7 @@ const InputForm = (props) => {
           />
         </p>
       </div>
-      <div className="input-group">
+      <div className={styles["input-group"]}>
         <p>
           <label htmlFor="expected-return">Expected Interest (%, per year)</label>
           <input
@@ -63,7 +65,7 @@ const InputForm = (props) => {
           />
         </p>
         <p>
-          <label htmlFor="duration">Investment Duration (years)</label>
+          <label htmlFor={styles["duration"]}>Investment Duration (years)</label>
           <input
             onChange={(e) => inputChangeHandler("duration", e.target.value)}
             value={userInput["duration"]}
@@ -72,9 +74,9 @@ const InputForm = (props) => {
           />
         </p>
       </div>
-      <p className="actions">
-        <Button onClick={resetHandler} type={"reset"} className={"buttonAlt"} text={"Reset"}></Button>
-        <Button type={"submit"} className={"button"} text={"Calculate"}></Button>
+      <p className={styles.actions}>
+        <Button onClick={resetHandler} type={"reset"} className={styles["buttonAlt"]} text={"Reset"}></Button>
+        <Button type={"submit"} className={styles["button"]} text={"Calculate"}></Button>
       </p>
     </form>
   );
