@@ -3,9 +3,7 @@ import { calculateInvestmentResults, formatter } from "../../util/investment";
 import styles from "./ResultsTable.module.css";
 
 const ResultsTable = ({ input }) => {
-	// console.log(input);
 	const resultsData = calculateInvestmentResults(input);
-	console.log(resultsData);
 
 	const initialInvestment =
 		resultsData[0].valueEndOfYear -

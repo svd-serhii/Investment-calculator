@@ -13,6 +13,8 @@ const initialState = {
 function App() {
 	const [userInput, setUserInput] = useState(initialState);
 
+	const inputIsValid = userInput.duration >= 1;
+
 	const inputChangeHandler = (input, value) => {
 		setUserInput((prevState) => {
 			return {
@@ -22,21 +24,17 @@ function App() {
 		});
 	};
 
-	// const calculateHandler = (userInput) => {
-	// 	setUserInput(userInput);
-	// };
-
 	return (
 		<div>
 			<Header />
 
 			<InputForm userInput={userInput} onChange={inputChangeHandler} />
-			<ResultsTable input={userInput} />
-
-			{/* {!userInput && (
-				<p style={{ textAlign: "center" }}>No investment calculated yet.</p>
+			{!inputIsValid && (
+				<p style={{ textAlign: "center" }}>
+					Please enter a duration greater than zero.{" "}
+				</p>
 			)}
-			{userInput && <ResultsTable input={userInput} />} */}
+			{inputIsValid && <ResultsTable input={userInput} />}
 		</div>
 	);
 }

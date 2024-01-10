@@ -1,18 +1,9 @@
 import React from "react";
-// import Button from "../UI/Button/Button";
+
 
 import styles from "./InputForm.module.css";
 
 const InputForm = ({ onChange, userInput }) => {
-	// const submitHandler = (event) => {
-	// 	event.preventDefault();
-
-	// 	props.onCalculate(userInput);
-	// };
-
-	// const resetHandler = () => {
-	// 	setUserInput(initialState);
-	// };
 
 	return (
 		<form className={styles.form}>
